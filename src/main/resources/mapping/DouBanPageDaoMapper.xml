@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.mapper.DouBanPageDao">
+
+    <resultMap id="douBanPageResultMap" type="com.java.entity.Page">
+        <id property="id" column="id" />
+        <result property="url" column="url" />
+        <result property="videoId" column="videoId" />
+        <result property="name" column="name" />
+        <result property="no" column="no" />
+        <result property="score" column="score" />
+        <result property="type" column="type" />
+        <result property="number" column="number" />
+        <result property="director" column="director" />
+        <result property="scriptwriter" column="scriptwriter" />
+        <result property="protagonists" column="protagonists" />
+        <result property="quote" column="quote" />
+        <result property="country" column="country" />
+        <result property="language" column="language" />
+        <result property="releaseDate" column="releaseDate" />
+        <result property="mins" column="mins" />
+        <result property="alternateName" column="alternateName" />
+        <result property="introduction" column="introduction" />
+    </resultMap>
+
+
+    <select id="getById" parameterType="int" resultMap="appListPoResultMap">
+<!--        select * from test_Spider_DouBanMovieTop250 where id = #{id}-->
+        select 12321
+</select>
+</mapper>

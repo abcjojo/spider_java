@@ -1,0 +1,25 @@
+  Redis:
+      redis服务端启动命令：redis-server.exe  --service-start
+      redis服务端关闭命令：redis-server.exe  --service-stop
+      redis客户端启动命令：redis-cli.exe -h 127.0.0.1 -p 6379
+
+      查看所有key： keys *
+      清除所有：flushall
+
+  Git:
+        推送最新修改: git push origin master
+
+
+  Quartz定时任务框架：
+     包含Job实现类AddUrlJob类(任务的执行逻辑类)，UrlSchedul类(定时任务类)。UrlSchedul类包含Jobdetail
+     和Trigger以及Scheduler三部分，JobDetail是任务的定义，定义Job类为AddUrlJob类，这是真正的执行逻辑所在；
+     Trigger是一个定时器，用来定义执行时间以及次数；将触发器以及调度任务详情绑定到调度器Scheduler上，调用start()
+     方法开启调度器。
+
+  MyBatis使用步骤总结
+    1)配置mybatis-config.xml 全局的配置文件 (1、数据源，2、外部的mapper)
+    2)创建SqlSessionFactory
+    3)通过SqlSessionFactory创建SqlSession对象
+    4)通过SqlSession操作数据库 CRUD
+    5)调用session.commit()提交事务
+    6)调用session.close()关闭会话

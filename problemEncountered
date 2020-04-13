@@ -1,0 +1,19 @@
+遇到的问题以及解决方法：
+    1. 2020.4.2  报错类型：redis.clients.jedis.exceptions.JedisDataException: WRONGTYPE Operation against a key holding
+  the wrong kind of value（redis中对操作的value与其类型不匹配引起）
+    解决问题过程：开始debug时候程序跳过多线程中的run()方法，错误的将问题定位到多线程模块的线程池上，后去掉多线程单独操作爬虫
+  依然报错，由于debug是解析类解析出url出现null,又错误的将问题定位到解析类，用debug跑一遍程序发现没问题，后随即在redis中写了
+  一个测试方法，发现Jedis对redis操作出现问题，debug后发现将RedisUtil类中的urlSet字段中的值写错为lowkey字段中的值(是因为之前
+  测试使用，将urlSet的值写为spider.lowlevel,后面忘记改回来)，至此bug浮出水面，程序跑通。
+    时间：2号晚上-----3号早上（共3小时左右）。
+
+    2.待解决问题：定时系统quartz中将定时时间设置为1分钟跑一次时候，job类似乎会执行两次。
+
+    3.解析详情页数据时候，每次单独解析单个字段时候xpath提取不到相应数据，后来改为将主要信息info解析出来，用正则从info(String类型)
+  中匹配相应的数据保存在page中。
+
+    4.redis闪退问题：目前共两次闪退，第一次在redis中conf文件添加maxmemory(最大占用内存)限制。
+    第二次：待解决。
+
+    5.NullPointerException
+
