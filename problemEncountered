@@ -15,5 +15,5 @@
     4.redis闪退问题：目前共两次闪退，第一次在redis中conf文件添加maxmemory(最大占用内存)限制。
     第二次：待解决。
 
-    5.NullPointerException
+    5.NullPointerException:由于service包和到包中的@Autowired注解注入失败，导致所有加@Autowired的对象全部为null。
 

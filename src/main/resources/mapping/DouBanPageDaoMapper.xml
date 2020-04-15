@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.java.mapper.DouBanPageDao">
+<mapper namespace="com.java.spider.dao.DouBanPageMapper">
 
-    <resultMap id="douBanPageResultMap" type="com.java.entity.Page">
+    <resultMap id="douBanPageResultMap" type="com.java.spider.entity.Page">
         <id property="id" column="id" />
         <result property="url" column="url" />
         <result property="videoId" column="videoId" />

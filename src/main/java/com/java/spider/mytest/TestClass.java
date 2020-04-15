@@ -1,11 +1,13 @@
 package com.java.spider.mytest;
 
-import com.java.spider.entity.Page;
 import com.java.spider.service.DouBanPageService;
+import com.java.spider.service.impl.DouBanPageServiceImpl;
 import org.junit.Test;
-import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import javax.annotation.PostConstruct;
 
 /**
  * @program: learn_spider
@@ -14,17 +16,27 @@ import javax.annotation.Resource;
  * @create: 2020-03-22 11:33
  **/
 
-@MapperScan("com.java.mapper")
+@Service
+@Component
 public class TestClass {
 
-    @Resource
-    private DouBanPageService service ;
+
+    @Autowired
+    DouBanPageService douBanPageService;
+
+    //DouBanPageService douBanPageService = new DouBanPageServiceImpl();
+
+    public static TestClass testClass;
+    @PostConstruct//在初始化的时候初始化静态对象和它的静态成员变量bean对象，静态存储下来，防止被释放
+    public void init() {
+        testClass = this;
+        testClass.douBanPageService = this.douBanPageService;
+    }
+
 
     @Test
-    public  void test() {
-
-        Page page = service.getById(1);
-        System.out.println(page.getUrl());
+    public void test() {
+        System.out.println(douBanPageService.select123());
 
     }
 }

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.spider.dao.TestSpiderDoubanmovietop250Mapper">
+
+  <resultMap id="BaseResultMap" type="com.java.spider.entity.TestSpiderDoubanmovietop250">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="videoId" jdbcType="VARCHAR" property="videoId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="no" jdbcType="INTEGER" property="no" />
+    <result column="score" jdbcType="DOUBLE" property="score" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="director" jdbcType="VARCHAR" property="director" />
+    <result column="scriptwriter" jdbcType="VARCHAR" property="scriptwriter" />
+    <result column="protagonists" jdbcType="VARCHAR" property="protagonists" />
+    <result column="quote" jdbcType="VARCHAR" property="quote" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="language" jdbcType="VARCHAR" property="language" />
+    <result column="releaseDate" jdbcType="VARCHAR" property="releaseDate" />
+    <result column="mins" jdbcType="INTEGER" property="mins" />
+    <result column="alternateName" jdbcType="VARCHAR" property="alternateName" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from test_spider_doubanmovietop250
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.java.spider.entity.TestSpiderDoubanmovietop250">
+    insert into test_spider_doubanmovietop250 (id, url, videoId, 
+      `name`, `no`, score, `type`, 
+      `number`, director, scriptwriter, 
+      protagonists, `quote`, country, 
+      `language`, releaseDate, mins, 
+      alternateName, introduction)
+    values (#{id,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{videoId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{no,jdbcType=INTEGER}, #{score,jdbcType=DOUBLE}, #{type,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{director,jdbcType=VARCHAR}, #{scriptwriter,jdbcType=VARCHAR}, 
+      #{protagonists,jdbcType=VARCHAR}, #{quote,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, 
+      #{language,jdbcType=VARCHAR}, #{releaseDate,jdbcType=VARCHAR}, #{mins,jdbcType=INTEGER}, 
+      #{alternateName,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.java.spider.entity.TestSpiderDoubanmovietop250">
+    update test_spider_doubanmovietop250
+    set url = #{url,jdbcType=VARCHAR},
+      videoId = #{videoId,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `no` = #{no,jdbcType=INTEGER},
+      score = #{score,jdbcType=DOUBLE},
+      `type` = #{type,jdbcType=VARCHAR},
+      `number` = #{number,jdbcType=INTEGER},
+      director = #{director,jdbcType=VARCHAR},
+      scriptwriter = #{scriptwriter,jdbcType=VARCHAR},
+      protagonists = #{protagonists,jdbcType=VARCHAR},
+      `quote` = #{quote,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      `language` = #{language,jdbcType=VARCHAR},
+      releaseDate = #{releaseDate,jdbcType=VARCHAR},
+      mins = #{mins,jdbcType=INTEGER},
+      alternateName = #{alternateName,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="BaseResultMap">
+    select id, url, videoId, `name`, `no`, score, `type`, `number`, director, scriptwriter, 
+    protagonists, `quote`, country, `language`, releaseDate, mins, alternateName, introduction
+    from test_spider_doubanmovietop250
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, url, videoId, `name`, `no`, score, `type`, `number`, director, scriptwriter, 
+    protagonists, `quote`, country, `language`, releaseDate, mins, alternateName, introduction
+    from test_spider_doubanmovietop250
+  </select>
+
+  <select id="select123" resultType="java.lang.Integer" >
+    <!--        select * from test_Spider_DouBanMovieTop250 where id = #{id}-->
+    select 12321
+  </select>
+
+</mapper>
