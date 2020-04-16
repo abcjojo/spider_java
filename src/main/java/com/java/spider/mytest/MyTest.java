@@ -57,10 +57,10 @@ public class MyTest {
     public static void main (String [] args){
 
         MyTest test = new MyTest();
-        test.setDownloadService(new HttpClientDownloadService());
-        test.setProcessService(new DBMovieProcessService());
+        test.setDownloadService(new HttpClientDownloadServiceImpl());
+        test.setProcessService(new DBMovieProcessServiceImpl());
         test.setStoreService(new ConsoleStoreService());
-        test.setRepositoryService(new QueueRepositoryService());
+        test.setRepositoryService(new QueueRepositoryServiceImpl());
 
         String url = "https://movie.douban.com/subject/1291578/";
         //设置起始url

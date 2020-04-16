@@ -2,7 +2,7 @@ package com.java.spider.util;
 
 
 import com.java.spider.entity.Page;
-import com.java.spider.service.impl.HttpClientDownloadService;
+import com.java.spider.service.impl.HttpClientDownloadServiceImpl;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -48,7 +48,7 @@ public class PageDownloadUtil {
         String url = "https://movie.douban.com/top250";
 //        String content = PageDownloadUtil.getPageContent(url);
 
-        HttpClientDownloadService down = new HttpClientDownloadService();
+        HttpClientDownloadServiceImpl down = new HttpClientDownloadServiceImpl();
         Page youKuPagepage = down.download(url);
 
         System.out.println(youKuPagepage.getContent());

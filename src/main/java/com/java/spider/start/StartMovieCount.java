@@ -63,11 +63,11 @@ public class StartMovieCount {
 
         StartMovieCount movie = new StartMovieCount();
 
-        movie.setDownloadService(new HttpClientDownloadService());
-        movie.setProcessService(new DBMovieProcessService());
+        movie.setDownloadService(new HttpClientDownloadServiceImpl());
+        movie.setProcessService(new DBMovieProcessServiceImpl());
         movie.setStoreService(new ConsoleStoreService());
-        //movie.setRepositoryService(new QueueRepositoryService());
-        movie.setRepositoryService(new RedisRepositoryService());
+        //movie.setRepositoryService(new QueueRepositoryServiceImpl());
+        movie.setRepositoryService(new RedisRepositoryServiceImpl());
 
 
 //        //豆瓣top250页面

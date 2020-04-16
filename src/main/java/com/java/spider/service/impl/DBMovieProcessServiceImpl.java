@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  * @author: Jojo.Lee
  * @create: 2020-03-20 10:30
  **/
-public class DBMovieProcessService implements IProcessService {
+public class DBMovieProcessServiceImpl implements IProcessService {
 
     public void process(Page page){
         String content = page.getContent();

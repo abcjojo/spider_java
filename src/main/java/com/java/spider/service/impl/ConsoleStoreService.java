@@ -1,7 +1,11 @@
 package com.java.spider.service.impl;
 
 import com.java.spider.entity.Page;
+import com.java.spider.entity.TestSpiderDoubanmovietop250;
+import com.java.spider.service.DouBanPageService;
 import com.java.spider.service.IStoreService;
+
+import java.util.List;
 
 /**
  * @program: learn_spider
@@ -30,7 +34,5 @@ public class ConsoleStoreService implements IStoreService {
         System.out.println("片长:"+page.getMins());
         System.out.println("又名:"+page.getAlternateName());
     }
-
-
 
 }

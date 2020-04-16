@@ -1,11 +1,14 @@
 package com.java.spider.controller;
 
+import com.java.spider.entity.Page;
 import com.java.spider.entity.TestSpiderDoubanmovietop250;
 import com.java.spider.service.DouBanPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @program: spider
@@ -21,7 +24,13 @@ public class TestController {
     DouBanPageService douBanPageService;
 
      @RequestMapping("/getById")
-    public TestSpiderDoubanmovietop250 getById(int id){
-        return douBanPageService.selectByPrimaryKey(id);
+    public void getById(){
+         Page page = douBanPageService.getById(1);
+         System.out.println(page.getUrl());
      }
+
+    @RequestMapping("/123")
+    public void test(){
+        System.out.println("succeed");
+    }
 }

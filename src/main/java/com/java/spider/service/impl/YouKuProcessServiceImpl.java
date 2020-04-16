@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  * @author: Jojo.Lee
  * @create: 2020-03-27 10:39
  **/
-public class YouKuProcessService {
+public class YouKuProcessServiceImpl {
 
     public void process(Page page){
         String content = page.getContent();

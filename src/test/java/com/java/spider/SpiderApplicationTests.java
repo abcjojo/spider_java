@@ -1,31 +1,46 @@
 package com.java.spider;
 
-import com.java.spider.entity.TestSpiderDoubanmovietop250;
+import com.java.spider.entity.Page;
 import com.java.spider.service.DouBanPageService;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 
 @SpringBootTest(classes = SpiderApplication.class)
 @RunWith(SpringRunner.class)
 public class SpiderApplicationTests {
 
-    @Autowired
+    @Resource
     private DouBanPageService douBanPageService;
 
-//    @Autowired
-//    private TestController testController;
+
 
     @Test
-    void contextLoads() {
-        //List<TestSpiderDoubanmovietop250> list = controller.getAll();
-        TestSpiderDoubanmovietop250 data = douBanPageService.selectByPrimaryKey(1);
+    public void contextLoads() {
+
+        Page data = douBanPageService.getById(1);
         System.out.println(data.getUrl());
 
-//        System.out.println(list.get(0));
+        data.setName("insertTest");
+        int insert = douBanPageService.insert(data);
+        System.out.println(insert);
+
+        data.setName("updataTest");
+        int update = douBanPageService.updateByPrimaryKey(data);
+
+        Page data1 = douBanPageService.selectByPrimaryKey(2);
+        System.out.println(data1.getUrl());
+
+        int delect = douBanPageService.deleteByPrimaryKey(3);
+        System.out.println(delect);
+
+        List<Page> selectAll = douBanPageService.selectAll();
+        System.out.println(selectAll.get(0).getUrl());
     }
 
 }

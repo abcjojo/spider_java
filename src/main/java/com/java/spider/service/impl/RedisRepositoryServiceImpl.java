@@ -10,7 +10,7 @@ import org.junit.platform.commons.util.StringUtils;
  * @author: Jojo.Lee
  * @create: 2020-03-30 20:02
  **/
-public class RedisRepositoryService implements IRepositoryService {
+public class RedisRepositoryServiceImpl implements IRepositoryService {
 
     RedisUtil redisUtil = new RedisUtil();
 

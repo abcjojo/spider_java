@@ -10,7 +10,7 @@ import com.java.spider.util.PageDownloadUtil;
  * @author: Jojo.Lee
  * @create: 2020-03-05 14:51
  **/
-public class HttpClientDownloadService implements IDownloadService {
+public class HttpClientDownloadServiceImpl implements IDownloadService {
 
 
     public Page download(String url) {
