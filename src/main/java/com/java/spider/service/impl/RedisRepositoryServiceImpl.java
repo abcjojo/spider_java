@@ -3,6 +3,7 @@ package com.java.spider.service.impl;
 import com.java.spider.service.IRepositoryService;
 import com.java.spider.util.RedisUtil;
 import org.junit.platform.commons.util.StringUtils;
+import org.springframework.stereotype.Component;
 
 /**
  * @program: learn_spider
@@ -10,6 +11,7 @@ import org.junit.platform.commons.util.StringUtils;
  * @author: Jojo.Lee
  * @create: 2020-03-30 20:02
  **/
+@Component
 public class RedisRepositoryServiceImpl implements IRepositoryService {
 
     RedisUtil redisUtil = new RedisUtil();

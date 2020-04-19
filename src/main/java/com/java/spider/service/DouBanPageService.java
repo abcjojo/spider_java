@@ -1,8 +1,9 @@
 package com.java.spider.service;
 
 import com.java.spider.entity.Page;
-import com.java.spider.entity.TestSpiderDoubanmovietop250;
+
 import java.util.List;
+import java.util.Map;
 
 
 public interface DouBanPageService {
@@ -13,7 +14,9 @@ public interface DouBanPageService {
 
     int insert(Page record);
 
-    Page selectByPrimaryKey(Integer id);
+    Page selectByPrimaryKey(Map map);
+
+    Page selectByVedioId(String videoId);
 
     List<Page> selectAll();
 

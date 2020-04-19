@@ -1,5 +1,7 @@
   Redis:
-      redis服务端启动命令：redis-server.exe  --service-start
+      redis用完之后一定要用命令关闭端口，要不然会出问题！！！！！！
+
+      redis服务端启动命令：redis-server.exe  --service-start或 redis-server.exe redis.windows.conf
       redis服务端关闭命令：redis-server.exe  --service-stop
       redis客户端启动命令：redis-cli.exe -h 127.0.0.1 -p 6379
 
@@ -23,3 +25,16 @@
     4)通过SqlSession操作数据库 CRUD
     5)调用session.commit()提交事务
     6)调用session.close()关闭会话
+
+
+    solr:  默认端口号 8983
+        启动： solr start   或   solr start -p 端口号
+        重启： solr restart -p 8983
+        关闭： solt stop -p 8983
+        创建核心： solr create -c 名称
+
+        solr页面：http://localhost:8983/solr/
+        界面刪除：
+        <delete>
+            <query>*:*</query>
+        </delete>

@@ -23,11 +23,15 @@ spring:
     static-locations: classpath:/static,classpath:/META-INF/resources,classpath:/templates/
   #jdbc配置
   datasource:
-    url: jdbc:mysql://localhost:3306/dev_myspider?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
-    #url: jdbc:mysql://localhost:3306/myspider?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/myspider?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    #url: jdbc:mysql://localhost:3306/dev_myspider?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  #solr配置
+  data:
+    solr:
+      host:http://localhost:8983/solr
 #mybatis配置
 mybatis:
   #映射文件路径

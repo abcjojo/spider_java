@@ -24,7 +24,18 @@
         <result column="introduction" jdbcType="VARCHAR" property="introduction" />
     </resultMap>
 
-
+    <sql id="whereSqlDebris">
+        <if test="map.id!= null "> and id = #{map.id} </if>
+        <if test="map.url!= null "> and url = #{map.url} </if>
+        <if test="map.videoId!= null "> and videoId = #{map.videoId} </if>
+        <if test="map.name!= null "> and name = #{map.name} </if>
+        <if test="map.no!= null "> and no = #{map.no} </if>
+        <if test="map.score!= null "> and score = #{map.score} </if>
+        <if test="map.type!= null "> and type = #{map.type} </if>
+        <if test="map.director!= null "> and director = #{map.director} </if>
+        <if test="map.country!= null "> and country = #{map.country} </if>
+        <if test="map.language!= null "> and language = #{map.language} </if>
+    </sql>
 
     <select id="getById" parameterType="java.lang.Integer" resultType="com.java.spider.entity.Page">
 		select * from spider_doubanmovietop250 where id = #{id}
@@ -73,11 +84,19 @@
         where id = #{id}
     </update>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.java.spider.entity.Page">
+    <select id="selectByPrimaryKey" parameterType="Map" resultType="com.java.spider.entity.Page">
         select id, url, videoId, `name`, `no`, score, `type`, `number`, director, scriptwriter,
             protagonists, `quote`, country, `language`, releaseDate, mins, alternateName, introduction
             from spider_doubanmovietop250
-        where id = #{id}
+        <where>
+            <include refid="whereSqlDebris" />
+        </where>
+    </select>
+
+    <select id="selectByVedioId" parameterType="java.lang.String" resultType="com.java.spider.entity.Page">
+        select *
+        from spider_doubanmovietop250
+        where videoId = #{videoId}
     </select>
 
     <select id="selectAll" resultMap="BaseResultMap">

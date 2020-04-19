@@ -60,7 +60,7 @@ public class MyTest {
         test.setDownloadService(new HttpClientDownloadServiceImpl());
         test.setProcessService(new DBMovieProcessServiceImpl());
         test.setStoreService(new ConsoleStoreService());
-        test.setRepositoryService(new QueueRepositoryServiceImpl());
+        //test.setRepositoryService(new QueueRepositoryServiceImpl());
 
         String url = "https://movie.douban.com/subject/1291578/";
         //设置起始url

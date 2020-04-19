@@ -13,7 +13,7 @@
  中匹配相应的数据保存在page中。
 
      4.redis闪退问题：目前共两次闪退，第一次在redis中conf文件添加maxmemory(最大占用内存)限制。
- 第二次：待解决。
+ 第二次：是由于每次用完redis都没有正常关闭导致，重启电脑就ok了。
 
      5.NullPointerException:由于service包和到包中的@Autowired注解注入失败，导致所有加@Autowired的对象全部为null。
  解决问题过程：开始报空指针控制台显示douBanPageServiceImpl这个bean无法被创建，是由于@Autowerid注入属性为null；我错误的
@@ -43,7 +43,10 @@
     8.未升级为Springboot时候的Spring项目中的application.yml不能被spring正确加载，文件的图标也不能正常显示绿叶，后重新建Springboot
   项目，将自带的application.priperties文件修改为application.yml正常显示。
 
+    9.springboot集成solr时时出错：SpiderApplicationTest报错不能创建solrClient这个bean，在单元测试时候报错：NoSuchMethodException
+ 将问题定位在HttpClient相关依赖的缺失，加上了HttpClient4.5.6的依赖后测试成功。
 
+    10.测试solr时候，由于给Page类的所有字段都加了@Field注解，导致solr报错，后去除多余注解，运行成功。
 
 
 

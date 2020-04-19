@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Mapper
@@ -16,7 +17,8 @@ public interface DouBanPageMapper {
 
     int insert(Page record);
 
-    Page selectByPrimaryKey(Integer id);
+    Page selectByPrimaryKey(Map map);
+    Page selectByVedioId(String videoId);
 
     List<Page> selectAll();
 

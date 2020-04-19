@@ -8,6 +8,7 @@ import com.java.spider.util.RegexUtil;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
 import org.htmlcleaner.XPatherException;
+import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
 
@@ -17,6 +18,7 @@ import java.util.regex.Pattern;
  * @author: Jojo.Lee
  * @create: 2020-03-20 10:30
  **/
+@Component
 public class DBMovieProcessServiceImpl implements IProcessService {
 
     public void process(Page page){
@@ -50,7 +52,7 @@ public class DBMovieProcessServiceImpl implements IProcessService {
                         String parseQuote = HtmlUtil.getFildByRegex(rootNode, LoadPropertyUtil.getDouBan("parseQuote"), LoadPropertyUtil.getDouBan("commonRegex"));
                         detailUrl = detailUrl + "@" + parseQuote;
                         page.addUrlList(detailUrl);
-                        System.out.println("detailUrl:"+detailUrl);
+                        //System.out.println("detailUrl:"+detailUrl);
                     }
                 }
             } catch (XPatherException e) {
@@ -108,7 +110,7 @@ public class DBMovieProcessServiceImpl implements IProcessService {
 
         //内容简介
         String introduction = HtmlUtil.getFildByRegex(rootNode, LoadPropertyUtil.getDouBan("parseIntroduction"),LoadPropertyUtil.getDouBan("commonRegex"));
-        page.setIntroduction(introduction);
+        //page.setIntroduction(introduction);
 
         //IMDb播放链接
 //        String IMDbUrl = HtmlUtil.getFildByRegex(rootNode, LoadPropertyUtil.getDouBan("parseIMDbUrl"),LoadPropertyUtil.getDouBan("commonRegex"));
@@ -122,11 +124,13 @@ public class DBMovieProcessServiceImpl implements IProcessService {
         if (match.matches("导演:")){
             page.setDirector(date);
         }else if (match.matches("编剧:")){
-            //String[] temp = date.split("/");
-            page.setScriptwriter(date);
+            String[] temp = date.split("/");
+            String sb = temp[0]+"/"+temp[1]+"/"+temp[2];
+            page.setScriptwriter(sb);
         }else if (match.matches("主演:")){
-            //String[] temp = date.split("/");
-            page.setProtagonists(date);
+            String[] temp = date.split("/");
+            String sb = temp[0]+"/"+temp[1]+"/"+temp[2];
+            page.setProtagonists(sb);
         }else if (match.matches("类型:")){
             //String[] temp = date.split("/");
             page.setType(date);

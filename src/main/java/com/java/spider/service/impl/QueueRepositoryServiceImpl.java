@@ -12,7 +12,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * @author: Jojo.Lee
  * @create: 2020-03-29 11:29
  **/
-public class QueueRepositoryServiceImpl implements IRepositoryService {
+//public class QueueRepositoryServiceImpl implements IRepositoryService {
+public class QueueRepositoryServiceImpl {
 
     //高优先级队列
     private Queue<String> highLevelQueue = new ConcurrentLinkedQueue<String>();

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @program: learn_spider
@@ -41,8 +42,13 @@ public class DouBanPageServiceImpl implements DouBanPageService {
     }
 
     @Override
-    public Page selectByPrimaryKey(Integer id) {
-        return douBanPageMapper.selectByPrimaryKey(id);
+    public Page selectByPrimaryKey(Map map) {
+        return douBanPageMapper.selectByPrimaryKey(map);
+    }
+
+    @Override
+    public Page selectByVedioId(String videoId) {
+        return douBanPageMapper.selectByVedioId(videoId);
     }
 
     @Override
