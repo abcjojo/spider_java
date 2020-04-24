@@ -8,9 +8,9 @@ package com.java.spider.service;
 */
 public interface IRepositoryService {
 
-    public String poll();
+    String poll();
 
-    public void addHighLevel(String url);
+    void addHighLevel(String url);
 
-    public void addLowLevel(String url);
+    void addLowLevel(String url);
 }

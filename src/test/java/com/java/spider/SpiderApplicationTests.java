@@ -1,11 +1,8 @@
 package com.java.spider;
 
-import com.java.spider.controller.SolrController;
 import com.java.spider.controller.SpiderController;
-import com.java.spider.entity.Page;
 import com.java.spider.service.DouBanPageService;
 import com.java.spider.service.SolrService;
-import com.java.spider.start.StartMovieCount;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.util.List;
 
 
 @SpringBootTest(classes = SpiderApplication.class)
@@ -28,15 +24,29 @@ public class SpiderApplicationTests {
     private SolrService solrService;
     @Resource
     private SpiderController spiderController;
+
     @Test
     public void contextLoads() throws IOException, SolrServerException {
 
-        String url = "https://movie.douban.com/subject/1309163/";
+
+        //solrService.testQueryFromSolr();
+
+        //String url = "https://movie.douban.com/subject/25895901/";
+       // String test = "https://www.processon.com/";
+        String url = "https://movie.douban.com/top250?start=175&filter=";
         spiderController.startDouBanTop(url);
 
-//        Page page = new Page();
-//        page.setId(4);
-//        page.setName("test00101");
+       //String url = "https://movie.douban.com/subject/1309163/";
+        //solrService.selectAll();'
+
+
+        //Page page = new Page();
+        //page.setName("恋恋笔记本");
+        //solrService.selectByParse(page,1,10);
+
+        //Page page = new Page();
+//        page.setId(15);
+        //page.setName("恋恋笔记本");
 //        page.setVideoId("1101101");
 //        page.setUrl("www.ertesf.sf.sfs.fsf");
 //        page.setNo(11012);
@@ -47,9 +57,11 @@ public class SpiderApplicationTests {
 //        page.setType("happy");
 //        page.setLanguage("chinese");
 //        page.setMins(1568);
-//        solrService.add(page);
-//
-//        solrController.add(page);
+        //solrService.add(page);
+
+
+
+        //solrController.add(page);
 
 
 //        Integer res = solrService.delById(1);

@@ -67,4 +67,15 @@ public class SolrServiceImpl implements SolrService {
         //直接到solr中查询数据
         return solrRepository.selectByParse(page, start, pageSiza);
     }
+
+    @Override
+    public List selectAll() throws IOException, SolrServerException {
+        System.out.println("selectAll方法执行了");
+        return solrRepository.selectAll();
+    }
+
+    @Override
+    public void testQueryFromSolr() throws IOException, SolrServerException {
+        solrRepository.testQueryFromSolr();
+    }
 }

@@ -4,6 +4,7 @@ import com.java.spider.entity.Page;
 import com.java.spider.service.DouBanPageService;
 import com.java.spider.service.SolrService;
 import com.java.spider.service.impl.DouBanPageServiceImpl;
+import com.java.spider.util.LoadPropertyUtil;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.UpdateResponse;
@@ -39,14 +40,15 @@ public class TestClass {
 //        solrClient.commit("spider");
 //        int status = updateResponse.getStatus();
 //        System.out.println("状态码："+status);
+//
+//        Page page = new Page();
+//        page.setId(1);
+//        page.setName("test00101");
+//        page.setVideoId("1101101");
+//        page.setUrl("www.ertesf.sf.sfs.fsf");
+//        page.setNo(11012);
+//        douBanPageService.insert(page);
 
-        Page page = new Page();
-        page.setId(1);
-        page.setName("test00101");
-        page.setVideoId("1101101");
-        page.setUrl("www.ertesf.sf.sfs.fsf");
-        page.setNo(11012);
-        douBanPageService.insert(page);
-
+        System.out.println( LoadPropertyUtil.getDouBan("eachDetailUrl"));
     }
 }

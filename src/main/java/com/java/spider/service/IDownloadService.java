@@ -11,6 +11,6 @@ import com.java.spider.entity.Page;
 */
 public interface IDownloadService {
 
-    public Page download(String url);
+    Page download(String url);
 
 }

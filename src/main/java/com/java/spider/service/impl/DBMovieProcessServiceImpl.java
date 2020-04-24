@@ -36,8 +36,10 @@ public class DBMovieProcessServiceImpl implements IProcessService {
             //解析列表页
             System.out.println("开始解析列表页：");
             //下一个列表页url
-            String nextUrl = "https://movie.douban.com/top250"+HtmlUtil.getAttributeByName(rootNode,LoadPropertyUtil.getDouBan("nextUrl"),"href");
+            String nextUrl = HtmlUtil.getAttributeByName(rootNode,LoadPropertyUtil.getDouBan("nextUrl"),"href");
             if (nextUrl != null) {
+                nextUrl = "https://movie.douban.com/top250" + nextUrl;
+                //为什么加到Page里面  这里感觉有问题！！！！！！！
                 page.addUrlList(nextUrl);
             }
 
@@ -47,7 +49,9 @@ public class DBMovieProcessServiceImpl implements IProcessService {
                 if (evaluateXPath.length>0){
                     for (Object object : evaluateXPath){
                         TagNode node = (TagNode) object;
-                        String detailUrl = HtmlUtil.getAttributeByName(node,LoadPropertyUtil.getDouBan("detailUrl"),"href");
+                        //String detailUrl = HtmlUtil.getAttributeByName(node,LoadPropertyUtil.getDouBan("eachDetailUrl"),"href");
+                        String detailUrl = node.getAttributeByName("href");
+                        System.out.println("test"+detailUrl);
                         //将解析出来的引述与详情页url绑在一起
                         String parseQuote = HtmlUtil.getFildByRegex(rootNode, LoadPropertyUtil.getDouBan("parseQuote"), LoadPropertyUtil.getDouBan("commonRegex"));
                         detailUrl = detailUrl + "@" + parseQuote;
@@ -125,11 +129,11 @@ public class DBMovieProcessServiceImpl implements IProcessService {
             page.setDirector(date);
         }else if (match.matches("编剧:")){
             String[] temp = date.split("/");
-            String sb = temp[0]+"/"+temp[1]+"/"+temp[2];
+            String sb = temp[0];
             page.setScriptwriter(sb);
         }else if (match.matches("主演:")){
             String[] temp = date.split("/");
-            String sb = temp[0]+"/"+temp[1]+"/"+temp[2];
+            String sb = temp[0]+"/"+temp[1];
             page.setProtagonists(sb);
         }else if (match.matches("类型:")){
             //String[] temp = date.split("/");
@@ -140,14 +144,18 @@ public class DBMovieProcessServiceImpl implements IProcessService {
         }else if (match.matches("语言:")){
             page.setLanguage(date);
         }else if (match.matches("上映日期:")){
-            page.setReleaseDate(date);
+            String[] temp = date.split("/");
+            String sb = temp[0];
+            page.setReleaseDate(sb);
         }else if (match.matches("片长:")){
             Pattern p = Pattern.compile("[\\d]");
             date = RegexUtil.getPageInfoByRegex(date,p,0);
             int temp = Integer.parseInt(date);
             page.setMins(temp);
         }else if (match.matches("又名:")){
-            page.setAlternateName(date);
+            String[] temp = date.split("/");
+            String sb = temp[0];
+            page.setAlternateName(sb);
         }
 
     }

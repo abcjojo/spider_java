@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learn_highcharts</title>
+    <script type="text/javascript" src="js/highcharts.js"></script>
+</head>
+<body>
+    <div id="container" style="width:600px;height:400px;"></div>
+    <script type="text/javascript">
+        //图表的位置
+        var options={
+            chart:{
+                type:'bar'//条形图
+            },
+            title:{
+                text:'我的第一个图表'
+            },
+            xAxis:{
+                categories:["苹果","香蕉","橙子"]
+            },
+            yAxis:{
+                title:{
+                    text:"吃水果的个数"
+                }
+            },
+            //设置数据
+            series:[
+                {
+                    name:"小明",
+                    data:[1,0,4]
+                },
+                {
+                    name:"小红",
+                    data:[5,7,3]
+                }
+            ]
+        };
+        //图表初始化的函数
+        var chart = Highcharts.chart("container",options);
+    </script>
+</body>
+</html>

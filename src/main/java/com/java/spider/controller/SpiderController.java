@@ -20,6 +20,7 @@ import java.util.concurrent.Executors;
  * @create: 2020-04-19 15:11
  **/
 @RestController
+@RequestMapping("/start")
 public class SpiderController {
 
     //固定线程池
@@ -48,8 +49,8 @@ public class SpiderController {
             //判断url是否为空
             if (StringUtils.isNotBlank(url)){
 
-                newFixedThreadPool.execute(new Runnable() {
-                    public void run() {
+//                newFixedThreadPool.execute(new Runnable() {
+//                    public void run() {
 
                         System.out.println("当前第"+Thread.currentThread().getId()+"个线程");
 
@@ -77,8 +78,8 @@ public class SpiderController {
                             solrService.add(page);
                         }
                         ThreadUtil.sleep(Long.parseLong(LoadPropertyUtil.getConfig("millions_3")));
-                    }
-                });
+//                    }
+//                });
             }else{
                 System.out.println("队列中的url解析完毕。。。");
 

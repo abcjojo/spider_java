@@ -19,4 +19,8 @@ public interface SolrService {
     void add(Page page);
 
     Map<String,Object> selectByParse(Page page, Integer pageNow, Integer pageSiza) throws IOException, SolrServerException;
+
+    List selectAll() throws IOException, SolrServerException;
+
+    void testQueryFromSolr() throws IOException, SolrServerException;
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>饼型图</title>
+    <!-- 导入jQuery框架-->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!--   导入 highcharts     -->
+    <script type="text/javascript" src="js/highcharts.js"></script>
+</head>
+<body>
+    <!-- 图表的容器   -->
+    <div id="container" style="width:500px;height:500px"></div>
+    <script type="text/javascript">
+        $(function () {
+        //    使用jQuery的方式
+            $("#container").highcharts({
+                //指定图表类型
+                chart:{
+                    type:"pie"//饼图
+                },
+                //主标题
+                title:{
+                    text:"2018年某网站浏览浏览器占比"
+                },
+                //数据列
+                series:[{
+                    name:"浏览器的访问量占比",
+                    data:[
+                        ["Firefox",20],
+                        ["IE",20],
+                        ["Chrome",35],
+                        ["Safari",10],
+                        ["Opera",8],
+                        ["其他",7]
+                    ]
+                }]
+            })
+        })
+    </script>
+</body>
+</html>

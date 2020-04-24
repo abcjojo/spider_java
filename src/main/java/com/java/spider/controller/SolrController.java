@@ -5,6 +5,7 @@ import com.java.spider.service.SolrService;
 import com.java.spider.start.StartMovieCount;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -20,6 +21,7 @@ import java.util.Map;
  **/
 
 @RestController
+@RequestMapping("/solr")
 public class SolrController {
 
     @Resource
@@ -33,6 +35,12 @@ public class SolrController {
     @RequestMapping("/add")
     public void add(Page page){
         solrService.add(page);
+    }
+
+
+    @RequestMapping(value = "/selectAll")
+    public List selectAll() throws IOException, SolrServerException {
+        return solrService.selectAll();
     }
 
     /**

@@ -11,6 +11,6 @@ import com.java.spider.entity.Page;
     */
 public interface IProcessService {
 
-    public void process(Page page);
+    void process(Page page);
 
 }

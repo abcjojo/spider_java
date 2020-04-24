@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learn_highcharts</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
+
+</head>
+<body>
+    <div id="container" style="max-width:600px;height:400px;"></div>
+    <script type="text/javascript">
+        //图表的位置
+        var options={
+            chart:{
+                type:'bar'//条形图
+            },
+            title:{
+                text:'我的第一个图表'
+            },
+            subtitle:{
+                test:'副标题'
+            },
+            xAxis:{
+                //x轴标题
+                title:{
+                    text:'水果分类'
+                },
+                categories:["苹果","香蕉","橙子"]
+            },
+            yAxis:{
+                title:{
+                    text:null
+                   // text:"吃水果的个数"
+                },
+                labels:{
+                    //不显示刻度false  默认不写为true显示
+                    enable:true,
+                    //自定义显示刻度
+                    formatter:function () {
+                        return this.value + "个";
+                    },
+                    //定义步长step
+                    step:2
+                }
+            },
+            //设置数据
+            series:[
+                {
+                    name:"小明",
+                    data:[1,0,4]
+                },
+                {
+                    name:"小红",
+                    data:[5,7,3]
+                }
+            ]
+        };
+        //图表初始化的函数
+        //var chart = Highcharts.chart("container",options);
+        //使用jQuery调用图表
+        $("#container").highcharts(options)
+    </script>
+</body>
+</html>
