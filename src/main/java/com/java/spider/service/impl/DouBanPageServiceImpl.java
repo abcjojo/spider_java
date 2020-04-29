@@ -61,4 +61,9 @@ public class DouBanPageServiceImpl implements DouBanPageService {
         return douBanPageMapper.updateByPrimaryKey(record);
     }
 
+    @Override
+    public List<Map> countByParse(Page page) {
+        return douBanPageMapper.countByParse(page);
+    }
+
 }

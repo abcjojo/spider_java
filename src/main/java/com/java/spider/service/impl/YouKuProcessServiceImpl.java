@@ -42,8 +42,8 @@ public class YouKuProcessServiceImpl {
         page.setHot(hot);
 
         //视屏类型
-        String type = HtmlUtil.getFildByRegex(rootNode, LoadPropertyUtil.getYOUKU("parseType"),LoadPropertyUtil.getYOUKU("hanziRegex"));
-        page.setType(type);
+//        String type = HtmlUtil.getFildByRegex(rootNode, LoadPropertyUtil.getYOUKU("parseType"),LoadPropertyUtil.getYOUKU("hanziRegex"));
+//        page.setType(type);
 
         String name = HtmlUtil.getFildByRegex(rootNode, LoadPropertyUtil.getYOUKU("parseName"),LoadPropertyUtil.getYOUKU("hanziRegex"));
         page.setName(name);

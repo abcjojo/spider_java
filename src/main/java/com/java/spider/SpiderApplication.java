@@ -23,11 +23,6 @@ public class SpiderApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpiderApplication.class, args);
-        //new SpiderApplication().start();
-    }
-    public void start(){
-        String url = "https://movie.douban.com/subject/1309163/";
-        new SpiderController().startDouBanTop(url);
     }
 
 }

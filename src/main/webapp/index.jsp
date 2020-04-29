@@ -11,7 +11,7 @@
 	// }
 
     window.onload = function () {
-    	window.location.href="http://localhost:8080/AppAdminWeb_war/app/list-app.action"; //在同当前窗口中打开窗口
+    	window.location.href="http://localhost:8080/index.html"; //在同当前窗口中打开窗口
     }
 </script>
 </html>

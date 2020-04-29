@@ -23,4 +23,6 @@ public interface DouBanPageMapper {
     List<Page> selectAll();
 
     int updateByPrimaryKey(Page record);
+
+    List<Map> countByParse(Page page);
 }

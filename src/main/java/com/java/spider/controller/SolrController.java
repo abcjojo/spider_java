@@ -1,6 +1,7 @@
 package com.java.spider.controller;
 
 import com.java.spider.entity.Page;
+import com.java.spider.service.DouBanPageService;
 import com.java.spider.service.SolrService;
 import com.java.spider.start.StartMovieCount;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -27,6 +28,54 @@ public class SolrController {
     @Resource
     private SolrService solrService;
 
+    @Resource
+    private DouBanPageService douBanPageService;
+
+    @RequestMapping(value = "/countByType1")
+    public List<Map> countByType1() {
+        Page page = new Page();
+        page.setType1("type1");
+        List<Map> list = douBanPageService.countByParse(page);
+        System.out.println(list);
+        return list;
+    }
+
+    @RequestMapping(value = "/countByType2")
+    public List<Map> countByType2() {
+        Page page = new Page();
+        page.setType2("type2");
+        List<Map> list = douBanPageService.countByParse(page);
+        System.out.println(list);
+        return list;
+    }
+
+    @RequestMapping(value = "/countByCountry")
+    public List<Map> countByCountry() {
+        Page page = new Page();
+        page.setCountry("country");
+        List<Map> list = douBanPageService.countByParse(page);
+        System.out.println(list);
+        return list;
+    }
+
+    @RequestMapping(value = "/countByLanguage")
+    public List<Map> countByLanguage() {
+        Page page = new Page();
+        page.setLanguage("language");
+        List<Map> list = douBanPageService.countByParse(page);
+        System.out.println(list);
+        return list;
+    }
+
+    @RequestMapping(value = "/countByYear")
+    public List<Map> countByYear() {
+        Page page = new Page();
+        page.setYear(0010);
+        List<Map> list = douBanPageService.countByParse(page);
+        System.out.println(list);
+        return list;
+    }
+
     @RequestMapping("/delById")
     public Integer delById(int id) throws IOException, SolrServerException {
         return solrService.delById(id);
@@ -40,7 +89,9 @@ public class SolrController {
 
     @RequestMapping(value = "/selectAll")
     public List selectAll() throws IOException, SolrServerException {
-        return solrService.selectAll();
+        List<Page> list = solrService.selectAll();
+        System.out.println();
+        return list;
     }
 
     /**

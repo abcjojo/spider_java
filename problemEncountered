@@ -60,9 +60,10 @@
 
     10.测试solr时候，由于给Page类的所有字段都加了@Field注解，导致solr报错，后去除多余注解，运行成功。
 
-    11.org.springframework.dao.DataAccessResourceFailureException: Error from server at http://127.0.0.1:8983/solr:
+    11.未解决：org.springframework.dao.DataAccessResourceFailureException: Error from server at http://127.0.0.1:8983/solr:
      Expected mime type application/octet-stream but got text/html.
 
+    12.测试HighCharts时，后端数据正常，但是前端不显示数据。清除浏览器缓存后数据显示正常。
 
 
 

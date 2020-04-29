@@ -50,13 +50,13 @@ public class SolrServiceImpl implements SolrService {
     public void add(Page page) {
         //新增MySQL中的数据
         douBanPageService.insert(page);
-        //System.out.println("Mysql新增数据状态码："+statusMysql);
         System.out.println("数据库新增电影："+page.getName()+" 信息成功！");
-        Page tmp = douBanPageService.selectByVedioId(page.getVideoId());
-        page.setId(tmp.getId());
-        //新增solr中的数据
-        solrRepository.insert(page);
-        System.out.println("solr新增电影："+page.getName()+" 信息成功！");
+
+//        Page tmp = douBanPageService.selectByVedioId(page.getVideoId());
+//        page.setId(tmp.getId());
+//        //新增solr中的数据
+//        solrRepository.insert(page);
+//        System.out.println("solr新增电影："+page.getName()+" 信息成功！");
     }
 
     @Override
@@ -71,7 +71,11 @@ public class SolrServiceImpl implements SolrService {
     @Override
     public List selectAll() throws IOException, SolrServerException {
         System.out.println("selectAll方法执行了");
-        return solrRepository.selectAll();
+
+        return douBanPageService.selectAll();
+
+        //solrRepository.selectAll()方法暂时查不到数据
+        //return solrRepository.selectAll();
     }
 
     @Override

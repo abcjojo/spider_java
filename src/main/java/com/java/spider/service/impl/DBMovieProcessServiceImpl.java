@@ -8,8 +8,10 @@ import com.java.spider.util.RegexUtil;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
 import org.htmlcleaner.XPatherException;
+import org.junit.platform.commons.util.StringUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -136,22 +138,45 @@ public class DBMovieProcessServiceImpl implements IProcessService {
             String sb = temp[0]+"/"+temp[1];
             page.setProtagonists(sb);
         }else if (match.matches("类型:")){
-            //String[] temp = date.split("/");
-            page.setType(date);
+            String[] temp = date.split("/");
+            for (int i = 0; i < temp.length; i++){
+                if (i == 0)
+                    page.setType1(temp[0]);
+                if (i == 1)
+                    page.setType2(temp[1]);
+                if (i == 2)
+                    page.setType3(temp[2]);
+            }
         }else if (match.matches("制片国家/地区:")){
-            //String[] temp = date.split("/");
-            page.setCountry(date);
+            String[] temp = date.split("/");
+            String sb = temp[0];
+            page.setCountry(sb);
         }else if (match.matches("语言:")){
-            page.setLanguage(date);
+            String[] temp = date.split("/");
+            String sb = temp[0];
+            page.setLanguage(sb);
         }else if (match.matches("上映日期:")){
             String[] temp = date.split("/");
             String sb = temp[0];
+            String[] time = sb.split("-");
+            String year = time[0].trim();// 2008-06-27(美国)
+            Pattern p = Pattern.compile("[^0-9]");
+            Matcher matcher = p.matcher(year);
+            String value = matcher.replaceAll("").trim();
+            page.setYear(Integer.parseInt(value));//56146
             page.setReleaseDate(sb);
         }else if (match.matches("片长:")){
-            Pattern p = Pattern.compile("[\\d]");
-            date = RegexUtil.getPageInfoByRegex(date,p,0);
-            int temp = Integer.parseInt(date);
-            page.setMins(temp);
+            String[] temp = date.split("/");
+            String sb = temp[0];
+            Pattern p = Pattern.compile("[^0-9]");
+            Matcher matcher = p.matcher(sb);
+            String value = matcher.replaceAll("").trim();
+//            int i = 0;
+//            while (matcher.find()) {
+//                value = value + matcher.group(i);
+//            }
+            Integer va = Integer.parseInt(value);
+            page.setMins(va);
         }else if (match.matches("又名:")){
             String[] temp = date.split("/");
             String sb = temp[0];

@@ -1,5 +1,6 @@
 package com.java.spider;
 
+import com.java.spider.controller.SolrController;
 import com.java.spider.controller.SpiderController;
 import com.java.spider.service.DouBanPageService;
 import com.java.spider.service.SolrService;
@@ -11,6 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 
 @SpringBootTest(classes = SpiderApplication.class)
@@ -24,16 +27,25 @@ public class SpiderApplicationTests {
     private SolrService solrService;
     @Resource
     private SpiderController spiderController;
+    @Resource
+    private SolrController solrController;
 
     @Test
     public void contextLoads() throws IOException, SolrServerException {
 
 
+//        List<Map> list = solrController.countByType1();
+//        System.out.println(list.get(0).get("countType1"));
+//        System.out.println(list.get(0).get("type1"));
+//        System.out.println(list.get(0));
+
+
         //solrService.testQueryFromSolr();
 
-        //String url = "https://movie.douban.com/subject/25895901/";
+        String url = "https://movie.douban.com/subject/1428581/";
        // String test = "https://www.processon.com/";
-        String url = "https://movie.douban.com/top250?start=175&filter=";
+        //String url = "https://movie.douban.com/top250?start=0&filter=";
+
         spiderController.startDouBanTop(url);
 
        //String url = "https://movie.douban.com/subject/1309163/";

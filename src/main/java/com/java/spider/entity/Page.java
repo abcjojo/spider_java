@@ -40,7 +40,11 @@ public class Page {
     private double score;
     //类型
     @Field
-    private String type;
+    private String type1;
+    @Field
+    private String type2;
+    @Field
+    private String type3;
     //引述
     private String quote;
     //内容简介
@@ -54,7 +58,7 @@ public class Page {
     @Field
     private String country;
     //年份
-    private int year;
+    private Integer year;
     //主演
     private String protagonists;
     //编剧

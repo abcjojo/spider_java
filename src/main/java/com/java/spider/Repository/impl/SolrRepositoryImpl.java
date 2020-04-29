@@ -77,10 +77,10 @@ public class SolrRepositoryImpl implements SolrRepository {
             solrQuery.set("language:"+page.getLanguage());
             solrQuery.addHighlightField(page.getLanguage());
         }
-        if (StringUtils.isNotBlank(page.getType())){
-            solrQuery.set("type:"+page.getType());
-            solrQuery.addHighlightField(page.getType());
-        }
+//        if (StringUtils.isNotBlank(page.getType())){
+//            solrQuery.set("type:"+page.getType());
+//            solrQuery.addHighlightField(page.getType());
+//        }
 
         solrQuery.set("df","t_product_keywords");//复制域查询
         solrQuery.setStart(start);

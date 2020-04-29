@@ -49,8 +49,8 @@ public class SpiderController {
             //判断url是否为空
             if (StringUtils.isNotBlank(url)){
 
-//                newFixedThreadPool.execute(new Runnable() {
-//                    public void run() {
+                newFixedThreadPool.execute(new Runnable() {
+                    public void run() {
 
                         System.out.println("当前第"+Thread.currentThread().getId()+"个线程");
 
@@ -77,9 +77,10 @@ public class SpiderController {
                             iStoreService.store(page);
                             solrService.add(page);
                         }
-                        ThreadUtil.sleep(Long.parseLong(LoadPropertyUtil.getConfig("millions_3")));
-//                    }
-//                });
+                        //设置每个页面抓取时间间隔，降低被封概率
+                        ThreadUtil.sleep(Long.parseLong(Math.random() * Integer.parseInt(LoadPropertyUtil.getConfig("millions_5"))+""));
+                    }
+        });
             }else{
                 System.out.println("队列中的url解析完毕。。。");
 

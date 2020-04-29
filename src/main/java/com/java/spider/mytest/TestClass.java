@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @program: learn_spider
@@ -35,20 +37,32 @@ public class TestClass {
 
 
     @Test
-    public void method() throws IOException, SolrServerException {
-//        UpdateResponse updateResponse = solrClient.deleteById("spider","2");
-//        solrClient.commit("spider");
-//        int status = updateResponse.getStatus();
-//        System.out.println("状态码："+status);
-//
-//        Page page = new Page();
-//        page.setId(1);
-//        page.setName("test00101");
-//        page.setVideoId("1101101");
-//        page.setUrl("www.ertesf.sf.sfs.fsf");
-//        page.setNo(11012);
-//        douBanPageService.insert(page);
+    public void method() {
 
-        System.out.println( LoadPropertyUtil.getDouBan("eachDetailUrl"));
+        String date1 = "1961(中国大陆) / 1964(中国大陆) / 1978(中国大陆) / 2004(中国大陆)";
+
+        while (true) {
+            System.out.println(Long.parseLong(Math.random() * Integer.parseInt(LoadPropertyUtil.getConfig("millions_5"))+""));
+
+        }
+
+//        String[] temp = date1.split("/");
+//        String sb = temp[0];
+//        String[] time = sb.split("-");
+//        String year = time[0].trim();// 2008-06-27(美国)
+//        Pattern p = Pattern.compile("[^0-9]");
+//        Matcher matcher = p.matcher(year);
+//        String value = matcher.replaceAll("").trim();
+//        System.out.println(value);
+//        Pattern p = Pattern.compile("[\\d]+");
+//        Matcher matcher = p.matcher("142分钟");
+//        String value = "";
+//        int i = 0;
+//        while (matcher.find()) {
+//            value = value + matcher.group(i);
+//        }
+//        int va = Integer.parseInt(value);
+//        System.out.println(va==142);
+
     }
 }

@@ -15,10 +15,10 @@
         <result column="director" jdbcType="VARCHAR" property="director" />
         <result column="scriptwriter" jdbcType="VARCHAR" property="scriptwriter" />
         <result column="protagonists" jdbcType="VARCHAR" property="protagonists" />
-        <result column="quote" jdbcType="VARCHAR" property="quote" />
         <result column="country" jdbcType="VARCHAR" property="country" />
         <result column="language" jdbcType="VARCHAR" property="language" />
         <result column="releaseDate" jdbcType="VARCHAR" property="releaseDate" />
+        <result column="year" jdbcType="INTEGER" property="year" />
         <result column="mins" jdbcType="INTEGER" property="mins" />
         <result column="alternateName" jdbcType="VARCHAR" property="alternateName" />
         <result column="introduction" jdbcType="VARCHAR" property="introduction" />
@@ -48,16 +48,16 @@
 
     <insert id="insert" parameterType="com.java.spider.entity.Page">
         insert into spider_doubanmovietop250 (url, videoId,
-            `name`, `no`, score, `type`,
+            `name`, `no`, score, `type1`,`type2`,`type3`,
             `number`, director, scriptwriter,
-            protagonists, `quote`, country,
-            `language`, releaseDate, mins,
+            protagonists, country,
+            `language`, releaseDate, `year`, mins,
             alternateName, introduction)
         values ( #{url}, #{videoId},
-            #{name}, #{no}, #{score}, #{type},
+            #{name}, #{no}, #{score}, #{type1},#{type2},#{type3},
             #{number}, #{director}, #{scriptwriter},
-            #{protagonists}, #{quote}, #{country},
-            #{language}, #{releaseDate}, #{mins},
+            #{protagonists}, #{country},
+            #{language}, #{releaseDate}, #{year}, #{mins},
             #{alternateName}, #{introduction})
     </insert>
 
@@ -69,15 +69,17 @@
         <if test="name!= null ">name = #{name }, </if>
             `no` = #{no},
              score = #{score},
-            `type` = #{type},
+            `type1` = #{type1},
+            `type2` = #{type2},
+            `type3` = #{type3},
              `number` = #{number},
              director = #{director},
              scriptwriter = #{scriptwriter},
              protagonists = #{protagonists},
-             `quote` = #{quote},
              country = #{country},
              `language` = #{language},
              releaseDate = #{releaseDate},
+             `year` = #{year},
              mins = #{mins},
              alternateName = #{alternateName},
              introduction = #{introduction}
@@ -85,8 +87,8 @@
     </update>
 
     <select id="selectByPrimaryKey" parameterType="Map" resultType="com.java.spider.entity.Page">
-        select id, url, videoId, `name`, `no`, score, `type`, `number`, director, scriptwriter,
-            protagonists, `quote`, country, `language`, releaseDate, mins, alternateName, introduction
+        select id, url, videoId, `name`, `no`, score, `type1`,type2`,type3`, `number`, director, scriptwriter,
+            protagonists, country, `language`, releaseDate, `year`, mins, alternateName, introduction
             from spider_doubanmovietop250
         <where>
             <include refid="whereSqlDebris" />
@@ -100,8 +102,61 @@
     </select>
 
     <select id="selectAll" resultMap="BaseResultMap">
-        select id, url, videoId, `name`, `no`, score, `type`, `number`, director, scriptwriter,
-               protagonists, `quote`, country, `language`, releaseDate, mins, alternateName, introduction
+        select *
         from spider_doubanmovietop250
     </select>
+
+    <resultMap id="byParse" type="java.util.Map">
+        <result column="type1" property="type1" jdbcType="VARCHAR" />
+        <result column="type2" property="type2" jdbcType="VARCHAR" />
+        <result column="country" property="country" jdbcType="VARCHAR" />
+        <result column="language" property="language" jdbcType="VARCHAR" />
+        <result column="year" property="year" jdbcType="INTEGER" />
+        <result column="count(type1)" property="countType1" jdbcType="VARCHAR"/>
+        <result column="count(type2)" property="countType2" jdbcType="VARCHAR"/>
+        <result column="count(country)" property="countCountry" jdbcType="VARCHAR"/>
+        <result column="count(language)" property="countLanguage" jdbcType="VARCHAR"/>
+        <result column="count(year)" property="countYear" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="countByParse" parameterType="com.java.spider.entity.Page" resultMap="byParse">
+        select
+        <if test='type1 != null'> type1,count(type1) </if>
+        <if test='type2 != null'> type2,count(type2) </if>
+        <if test='country != null'> country,count(country) </if>
+        <if test='language != null'> `language`,count(language) </if>
+        <if test='year != null'> `year`,count(year) </if>
+        from spider_doubanmovietop250
+        group by
+        <if test='type1 != null'> type1 </if>
+        <if test='type2 != null'> type2 </if>
+        <if test='country != null'> country </if>
+        <if test='language != null'> `language` </if>
+        <if test='year != null'> `year` </if>
+        ORDER BY
+        <if test='type1 != null'> count(type1) </if>
+        <if test='type2 != null'> count(type2) </if>
+        <if test='country != null'> count(country) </if>
+        <if test='language != null'> count(`language`) </if>
+        <if test='year != null'> `year` </if>
+    </select>
+
+
+    <select id="countByType" parameterType="com.java.spider.entity.Page" resultMap="byParse">
+        select
+        <if test='type1 != null'> s1.type1, count(s1.type1) </if>
+        <if test='type2 != null'> s2.type2, count(s2.type2) </if>
+        from spider_doubanmovietop250 as s1
+        left JOIN spider_doubanmovietop250 as s2
+        ON s1.id = s2.id
+        group by
+        <if test='type1 != null'> type1 </if>
+        <if test='type2 != null'> type2 </if>
+        <if test='country != null'> country </if>
+        <if test='language != null'> `language` </if>
+        <if test='year != null'> `year` </if>
+        ORDER BY
+        <if test='type1 != null'> s1.type1 </if>
+    </select>
+
 </mapper>
