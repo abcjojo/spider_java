@@ -39,11 +39,12 @@ public class TestClass {
     @Test
     public void method() {
 
-        String date1 = "1961(中国大陆) / 1964(中国大陆) / 1978(中国大陆) / 2004(中国大陆)";
+       // String date1 = "1961(中国大陆) / 1964(中国大陆) / 1978(中国大陆) / 2004(中国大陆)";
+
 
         while (true) {
-            System.out.println(Long.parseLong(Math.random() * Integer.parseInt(LoadPropertyUtil.getConfig("millions_5"))+""));
-
+           // System.out.println(Long.parseLong(Math.random() * Integer.parseInt(LoadPropertyUtil.getConfig("millions_5"))+""));
+            System.out.println((int)(Math.random() * Long.parseLong( Integer.parseInt(LoadPropertyUtil.getConfig("millions_5"))+"")));
         }
 
 //        String[] temp = date1.split("/");

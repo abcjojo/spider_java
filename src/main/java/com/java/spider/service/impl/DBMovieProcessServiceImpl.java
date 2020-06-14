@@ -53,7 +53,7 @@ public class DBMovieProcessServiceImpl implements IProcessService {
                         TagNode node = (TagNode) object;
                         //String detailUrl = HtmlUtil.getAttributeByName(node,LoadPropertyUtil.getDouBan("eachDetailUrl"),"href");
                         String detailUrl = node.getAttributeByName("href");
-                        System.out.println("test"+detailUrl);
+                        System.out.println("列表页URL： "+detailUrl);
                         //将解析出来的引述与详情页url绑在一起
                         String parseQuote = HtmlUtil.getFildByRegex(rootNode, LoadPropertyUtil.getDouBan("parseQuote"), LoadPropertyUtil.getDouBan("commonRegex"));
                         detailUrl = detailUrl + "@" + parseQuote;
@@ -83,7 +83,7 @@ public class DBMovieProcessServiceImpl implements IProcessService {
                 if (Pattern.matches(tempRegex, j.trim())){
                     String[] tem = j.split(i);
                     addparse(i,tem[1],page);
-                    System.out.println(i+":  "+tem[1]);
+                    System.out.println(i+"   "+tem[1]);
                     break;
                 }
             }

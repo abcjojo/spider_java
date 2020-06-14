@@ -78,7 +78,8 @@ public class SpiderController {
                             solrService.add(page);
                         }
                         //设置每个页面抓取时间间隔，降低被封概率
-                        ThreadUtil.sleep(Long.parseLong(Math.random() * Integer.parseInt(LoadPropertyUtil.getConfig("millions_5"))+""));
+                        //ThreadUtil.sleep(Long.parseLong(Math.random() * Integer.parseInt(LoadPropertyUtil.getConfig("millions_5"))+""));
+                        ThreadUtil.sleep(Long.parseLong(LoadPropertyUtil.getConfig("millions_5")));
                     }
         });
             }else{

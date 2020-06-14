@@ -1,12 +1,18 @@
   Redis:
       redis用完之后一定要用命令关闭端口，要不然会出问题！！！！！！
 
+      目录文件夹：D:\redis\Redis-x64-3.0.500
       redis服务端启动命令：redis-server.exe  --service-start或 redis-server.exe redis.windows.conf
       redis服务端关闭命令：redis-server.exe  --service-stop
       redis客户端启动命令：redis-cli.exe -h 127.0.0.1 -p 6379
 
       查看所有key： keys *
       清除所有：flushall
+      redis启动出错：Creating Server TCP listening socket 127.0.0.1:6379: bind: No error
+        redis-cli.exe
+        127.0.0.1:6379>shutdown
+        not connected>exit
+        然后重新运行redis-server.exe redis.windows.conf，启动成功！
 
   Git:
         推送最新修改: git push origin master
@@ -28,7 +34,8 @@
 
 
     solr:  默认端口号 8983
-        启动： solr start   或   solr start -p 端口号
+        启动： 进入D:\solr\solr-7.7.2\bin打开cmd界面
+                命令： solr start   或   solr start -p 8983
         重启： solr restart -p 8983
         关闭： solt stop -p 8983
         创建核心： solr create -c 名称
@@ -38,7 +45,7 @@
         <delete>
             <query>*:*</query>
         </delete>
-
+        <commit/>
     爬虫：解决频繁抓取ip被封的办法：
         1. 设置每个页面抓取时间间隔，降低被封概率
         2. 购买动态ip库

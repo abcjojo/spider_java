@@ -42,9 +42,9 @@ public class SpiderApplicationTests {
 
         //solrService.testQueryFromSolr();
 
-        String url = "https://movie.douban.com/subject/1428581/";
+        //String url = "https://movie.douban.com/subject/27191492/";
        // String test = "https://www.processon.com/";
-        //String url = "https://movie.douban.com/top250?start=0&filter=";
+        String url = "https://movie.douban.com/top250?start=0&filter=";
 
         spiderController.startDouBanTop(url);
 

@@ -52,11 +52,11 @@ public class SolrServiceImpl implements SolrService {
         douBanPageService.insert(page);
         System.out.println("数据库新增电影："+page.getName()+" 信息成功！");
 
-//        Page tmp = douBanPageService.selectByVedioId(page.getVideoId());
-//        page.setId(tmp.getId());
-//        //新增solr中的数据
-//        solrRepository.insert(page);
-//        System.out.println("solr新增电影："+page.getName()+" 信息成功！");
+        Page tmp = douBanPageService.selectByVedioId(page.getVideoId());
+        page.setId(tmp.getId());
+        //新增solr中的数据
+        solrRepository.insert(page);
+        System.out.println("solr新增电影："+page.getName()+" 信息成功！");
     }
 
     @Override

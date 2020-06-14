@@ -1,15 +1,4 @@
 
-
-
-  各位老师大家好，我是计算16-8班的李军军，毕业设计题目是基于Java的网络爬虫系统的设计与实现，导师是周昕老师。开发语言采用Java，
-开发工具idea。系统分为数据采集层、处理层、存储、展示层。该系统使用Springboot框架，持久层框架使用mybatis，缓存用redis，
-定时框架使用Quartz，数据库用MySQL，
-使用solr做全文检索。数据展示用的是HighCharts。在前期工作中，完成了数据的采集、处理过滤、存储以及爬虫定时器和使用solr在某些
-字段上建立索引，。目前已完成了爬虫模块、存储模块、定时任务模块，大约占总工作量的80%。目前进展情况正常。下一步工作包括数据
-展示，以及完成论文撰写。按目前进度估计，可在学校规定在5月20日左右完成论文查重，6月6日左右完成论文答辩。
-
-
-
 遇到的问题以及解决方法：
     1. 2020.4.2  报错类型：redis.clients.jedis.exceptions.JedisDataException: WRONGTYPE Operation against a key holding
  the wrong kind of value（redis中对操作的value与其类型不匹配引起）
@@ -64,11 +53,3 @@
      Expected mime type application/octet-stream but got text/html.
 
     12.测试HighCharts时，后端数据正常，但是前端不显示数据。清除浏览器缓存后数据显示正常。
-
-
-
-
-
-
-
-

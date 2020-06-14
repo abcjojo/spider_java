@@ -16,7 +16,8 @@ import org.quartz.*;
 public class AddUrlJob implements Job {
 
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        System.out.println("启动定时任务......每30分钟执行一次。");
+        System.out.println("Quartz启动成功！");
+        System.out.println("定时任务启动！系统将会每30分钟刷新一次任务。");
 //        JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
 //        System.out.println(jobDataMap.get("level") + "   " + jobDataMap.get("job"));
 
